@@ -120,19 +120,34 @@ if (!config.isUaaConfigured()) {
     });
 
   // example of calling a custom microservice.
-  // if (windServiceURL && windServiceURL.indexOf('https') === 0) {
-  //   app.get('/windy/*', passport.authenticate('main', { noredirect: true}),
-  //     // if calling a secure microservice, you can use this middleware to add a client token.
-  //     // proxy.addClientTokenMiddleware,
-  //     proxy.customProxyMiddleware('/windy', windServiceURL)
-  //   );
-  // }
+
+  /*if (windServiceURL && windServiceURL.indexOf('https') === 0) {
+     //app.get('/windy/*', passport.authenticate('main', { noredirect: true}),
+     app.use('/windy/', passport.authenticate('main', { noredirect: true}),
+  //   /// if calling a secure microservice, you can use this middleware to add a client token.
+        proxy.addClientTokenMiddleware,
+       proxy.customProxyMiddleware('/windy', windServiceURL)
+     );
+   }*/
+
+
 
   if (config.rmdDatasourceURL && config.rmdDatasourceURL.indexOf('https') === 0) {
     app.get('/api/datagrid/*',
         proxy.addClientTokenMiddleware,
         proxy.customProxyMiddleware('/api/datagrid', config.rmdDatasourceURL, '/services/experience/datasource/datagrid'));
   }
+  if (config.assetURL && config.assetURL.indexOf('https') === 0) {
+  app.get('/api/asset-service/*',
+      proxy.addClientTokenMiddleware,
+      proxy.customProxyMiddleware('/api/asset-service', config.assetURL, '/v1'));
+}
+
+if (config.timeseriesURL && config.timeseriesURL.indexOf('https') === 0) {
+  app.post('/api/timeseries/*',
+      proxy.addClientTokenMiddleware,
+      proxy.customProxyMiddleware('/api/timeseries', config.timeseriesURL, '/v1/datapoints'));
+}
 
   //Use this route to make the entire app secure.  This forces login for any path in the entire app.
   app.use('/', passport.authenticate('main', {
