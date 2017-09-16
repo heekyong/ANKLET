@@ -1,6 +1,10 @@
 ---
 applications:
+<<<<<<< HEAD
+  - name: woobin_pushtest
+=======
   - name: Anklet0916
+>>>>>>> 4566b878c31bcb9fe7909f9567180ee5ab315cc4
     memory: 128M
     timeout: 180
     buildpack: nodejs_buildpack
