@@ -19,12 +19,19 @@
       </div>
       <p>카드영역 만듦.</p>
 
-      <div style="height:700px; width:1000px; display:flex">
-        <px-map zoom="16" lat="37.56572191237293" lng="-233.01959037780765" flex-to-size disable-touch-zoom>
-          <px-map-tile-layer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'>
-          </px-map-tile-layer>
-        </px-map>
-      </div>
+
+      	<div id="map" style="width:500px;height:400px;"></div>
+      	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0ff97caf48f4b4ded79364f1e8064a0"></script>
+      	<script>
+      		var container = document.getElementById('map');
+      		var options = {
+      			center: new daum.maps.LatLng(37.56572191237293,-233.01959037780765),
+      			level: 3
+      		};
+
+      		var map = new daum.maps.Map(container, options);
+      	</script>
+        </div>
 
     </px-card>
 
