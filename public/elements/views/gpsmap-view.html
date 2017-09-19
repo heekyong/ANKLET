@@ -1,11 +1,34 @@
+<link rel="import" href="../../bower_components/px-theme/px-theme-styles.html">
+  <style include="px-theme-styles" is="custom-style"></style>
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/px-card/px-card.html">
 <link rel="import" href="../../bower_components/px-map/px-map.html">
+<link rel="import" href="../../bower_components/px-alert-message/px-alert-message.html">
+
+<style media="screen">
+  .alert-message-container {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1020;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+</style>
 
 <dom-module id="gpsmap-view">
   <template>
-    <iframe src="./daummap.html" width="500" height="400" scrolling="no" framespacing=0 marginheight=0 marginwidth=0 vspace=0></iframe><p>
+    <iframe src="./daummap.html" width="1000" height="800" scrolling="no" framespacing=0 marginheight=0 marginwidth=0 vspace=0></iframe><p>
     <!--iframe option width="100%" height="400" name="ppp" frameborder="0"-->
+
+
+      <div class="alert-message-container">
+          <px-alert-message visible type="important" action="dismiss" message-title="김OO 위험경보" message="GPS정보수신 불가능. 발찌훼손 우려" auto-dismiss="0" hide-severity hide-badge></px-alert-message>
+          <px-alert-message visible type="important" action="dismiss" message-title="박OO 위험경보" message="GPS정보수신 불가능. 발찌훼손 우려" auto-dismiss="0" hide-severity hide-badge></px-alert-message>
+          <px-alert-message visible type="warning" action="dismiss" message-title="이XX 주의경보" message="OO초등학교 접근." auto-dismiss="0" hide-severity hide-badge></px-alert-message>
+          <px-alert-message visible type="error" action="dismiss" message-title="김XX 주의경보" message="OO중학교 접근." auto-dismiss="0" hide-severity hide-badge></px-alert-message>
+        </div>
+
   </template>
   <script>
     Polymer({
