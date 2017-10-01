@@ -2,24 +2,304 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Daum Map Source</title>
+	<title>Project ANKLET</title>
 </head>
 <body>
 	<div id="map" style="width:100%;height:800px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da41341b246acd20de8d870068fb3510"></script>
 	<script>
-
 		var container = document.getElementById('map');
 		var options = {
-			center: new daum.maps.LatLng(37.511965, 126.944293),
-			level: 3
+			center: new daum.maps.LatLng(37.510, 126.940),
+			level: 4
 		};
+
+		/*
+
+		case 1: 3명의 index 각각 0, 1, 2
+		ex. position0 => case1의 첫 번째 사람
+		case 2: 1명 index 3
+		case 3: 1명 index 4
+		*/
 
 		var map = new daum.maps.Map(container, options);
 
+		var position0 = [
+			37.50886,	126.9385,
+			37.50868, 126.938196,
+			37.508477, 126.938415,
+			37.508318, 126.938614,
+			37.508255,	126.938714,
+			37.50812,	126.938934,
+			37.508215,	126.940091,
+			37.508461,	126.940061,
+			37.508825,	126.940051,
+			37.509007,	126.940071,
+			37.509356,	126.940084,
+			37.509637,	126.940084,
+			37.509764,	126.940116,
+			37.509977,	126.940116,
+			37.51037,	126.940116,
+			37.51072,	126.940084,
+			37.511118,	126.940116,
+			37.511441,	126.940127,
+			37.511739,	126.940159,
+			37.512054,	126.940138,
+			37.512054,	126.940138
+		];
 
+		var position1 = [
+			37.510979,	126.942813,
+			37.511141,	126.942641,
+			37.511192,	126.94247,
+			37.511226,	126.942212,
+			37.511307,	126.942061,
+			37.511384,	126.941696,
+			37.511478,	126.941418,
+			37.511537,	126.941171,
+			37.511716,	126.9413,
+			37.511848,	126.94138,
+			37.511869,	126.941144,
+			37.511835,	126.940924,
+			37.511586,	126.940688,
+			37.511329,	126.94045,
+			37.511169,	126.940442,
+			37.511016,	126.940653,
+			37.510937,	126.940868
+		];
 
+		var position2 = [
+			37.51197,	126.931923,
+			37.51146,	126.931945,
+			37.510447,	126.932059,
+			37.509801,	126.93208,
+			37.509273,	126.932144,
+			37.508018,	126.932255,
+			37.507232,	126.932304,
+			37.506351,	126.932549,
+			37.506025,	126.933024
+		];
+
+		var position3 = [
+			37.505109,	126.93941,
+			37.505475,	126.939453,
+			37.505722,	126.939506,
+			37.505892,	126.939539,
+			37.505995,	126.939378,
+			37.506131,	126.939066,
+			37.506224,	126.938863,
+			37.506335,	126.938594,
+			37.506437,	126.938161,
+			37.506522,	126.937818,
+			37.506624,	126.937474,
+			37.506726,	126.937217,
+			37.506888,	126.937153,
+			37.507058,	126.937228,
+			37.507203,	126.936852,
+			37.507305,	126.93667,
+			37.507458,	126.936627,
+			37.50785,	126.936605,
+			37.508046,	126.936756,
+			37.508326,	126.936906,
+			37.508726,	126.936884,
+			37.508973,	126.93697,
+			37.509177,	126.93711
+		];
+
+		var position4 = [
+			37.511965,	126.944293,
+			37.512084,	126.944266,
+			37.512382,	126.944255,
+			37.512501,	126.944266
+		];
+
+		var path0 = [];
+		var path1 = [];
+		var path2 = [];
+		var path3 = [];
+		var path4 = [];
+
+		var i = 0;
+
+		var makePath = function(pos, path) {
+			for (i = 0; i < pos.length; i = i+2) {
+				path.push(new daum.maps.LatLng(pos[i], pos[i+1]));
+			}
+		}
+
+		makePath(position0, path0);
+		makePath(position1, path1);
+		makePath(position2, path2);
+		makePath(position3, path3);
+		makePath(position4, path4);
+
+		var marker0 = [];
+		var marker1 = [];
+		var marker2 = [];
+		var marker3 = [];
+		var marker4 = [];
+
+		var makeMarker = function(path, marker) {
+			for (i = 0; i < path.length; i++) {
+				var new_marker = new daum.maps.Marker({
+	    		position: path[i]
+				});
+				marker.push(new_marker);
+			}
+		}
+
+		makeMarker(path0, marker0);
+		makeMarker(path1, marker1);
+		makeMarker(path2, marker2);
+		makeMarker(path3, marker3);
+		makeMarker(path4, marker4);
+
+		var linePath0 = [];
+		var linePath1 = [];
+		var linePath2 = [];
+		var linePath3 = [];
+		var linePath4 = [];
+
+		var polyline0 = new daum.maps.Polyline({
+			path: linePath0,
+			strokeWeight: 5,
+			strokeColor: '#ff213f',
+			strokeOpacity: 0.7,
+			strokeStyle: 'solid'
+		})
+
+		var polyline1 = new daum.maps.Polyline({
+			path: linePath1,
+			strokeWeight: 5,
+			strokeColor: '#ff7e47',
+			strokeOpacity: 0.7,
+			strokeStyle: 'solid'
+		});
+
+		var polyline2 = new daum.maps.Polyline({
+			path: linePath2,
+			strokeWeight: 5,
+			strokeColor: '#ffbe33',
+			strokeOpacity: 0.7,
+			strokeStyle: 'solid'
+		});
+
+		var polyline3 = new daum.maps.Polyline({
+			path: linePath3,
+			strokeWeight: 5,
+			strokeColor: '#0080c4',
+			strokeOpacity: 0.7,
+			strokeStyle: 'solid'
+		});
+
+		var polyline4 = new daum.maps.Polyline({
+			path: linePath4,
+			strokeWeight: 5,
+			strokeColor: '#74ab32',
+			strokeOpacity: 0.7,
+			strokeStyle: 'solid'
+		});
+
+		linePath0.push(path0[0]);
+		linePath1.push(path1[0]);
+		linePath2.push(path2[0]);
+		linePath3.push(path3[0]);
+		linePath4.push(path4[0]);
+
+		marker0[0].setMap(map);
+		marker1[0].setMap(map);
+		marker2[0].setMap(map);
+		marker3[0].setMap(map);
+		marker4[0].setMap(map);
+
+		i = 1;
+
+		var loop = setInterval(function(){
+
+			if (i > path3.legnth) {
+				clearInterval(loop);
+			}
+
+			if (i < path0.length) {
+				linePath0.push(path0[i]);
+				polyline0.setMap(null);
+				polyline0 = new daum.maps.Polyline({
+					path: linePath0,
+					strokeWeight: 5,
+					strokeColor: '#ff213f',
+					strokeOpacity: 0.7,
+					strokeStyle: 'solid'
+				});
+				polyline0.setMap(map);
+				marker0[i-1].setMap(null);
+				marker0[i].setMap(map);
+			}
+
+			if (i < path1.length) {
+				linePath1.push(path1[i]);
+				polyline1.setMap(null);
+				polyline1 = new daum.maps.Polyline({
+					path: linePath1,
+					strokeWeight: 5,
+					strokeColor: '#ff7e47',
+					strokeOpacity: 0.7,
+					strokeStyle: 'solid'
+				});
+				polyline1.setMap(map);
+				marker1[i-1].setMap(null);
+				marker1[i].setMap(map);
+			}
+
+			if (i < path2.length){
+				linePath2.push(path2[i]);
+				polyline2.setMap(null);
+				polyline2 = new daum.maps.Polyline({
+					path: linePath2,
+					strokeWeight: 5,
+					strokeColor: '#ffbe33',
+					strokeOpacity: 0.7,
+					strokeStyle: 'solid'
+				});
+				polyline2.setMap(map);
+				marker2[i-1].setMap(null);
+				marker2[i].setMap(map);
+			}
+
+			if (i < path3.length){
+				linePath3.push(path3[i]);
+				polyline3.setMap(null);
+				polyline3 = new daum.maps.Polyline({
+					path: linePath3,
+					strokeWeight: 5,
+					strokeColor: '#0080c4',
+					strokeOpacity: 0.7,
+					strokeStyle: 'solid'
+				});
+				polyline3.setMap(map);
+				marker3[i-1].setMap(null);
+				marker3[i].setMap(map);
+			}
+
+			if (i < path4.length){
+				linePath4.push(path4[i]);
+				polyline4.setMap(null);
+				polyline4 = new daum.maps.Polyline({
+					path: linePath4,
+					strokeWeight: 5,
+					strokeColor: '#74ab32',
+					strokeOpacity: 0.7,
+					strokeStyle: 'solid'
+				});
+				polyline4.setMap(map);
+				marker4[i-1].setMap(null);
+				marker4[i].setMap(map);
+			}
+
+			i++;
+
+		}, 1500);
 
 	</script>
 </body>
 </html>
+
