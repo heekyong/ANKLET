@@ -5,7 +5,7 @@
 <link rel="import" href="../../bower_components/px-theme/px-theme-styles.html">
 <link rel="import" href="../../bower_components/px-timeline/px-timeline.html">
 <link rel="import" href="../../bower_components/px-percent-circle/px-percent-circle.html">
-
+<link rel="import" href="../../bower_components/px-typeahead/px-typeahead.html"/>
 
 
 
@@ -35,32 +35,22 @@
       <!-- Third option loads jet engine data from Predix Time Series directly.
             You can use this option if you inserted jet engine data using the Predix Toolkit -->
       <!-- <iron-ajax url="/predix-api/predix-asset/engine" id="assetQueryElement" last-response="{{rawAssetData}}" auto></iron-ajax> -->
-테스트
+테스트1 퍼센트써클
 <div style="width:100px"> <px-percent-circle val="33" max="100" thickness="30"></px-percent-circle></div>
-
-      <px-timeline
-        time-groups="true"
-        show-node-content="true"
-        enhanced="true"
-        timeline-data="
-        {"metaData":
-        {"editedBy":"GE Digital","editedDate":"2016-10-27 18:28:10-07","editorTitle":"Chief Technical Division","percent":"100","editorImg":"img/immelt.jpg"},
-        "content":{"title":"Building the industrial internet","bodyType":"text",
-        "body":[{"text":"On Tuesday, GE CEO Jeff Immelt and Intel CEO Brian Krzanich spoke",
-        "headline":"Predix, the operating system for the Industrial Internet",
-        "isComment":true}]}},
-
-        {"metaData":
-        {"editedBy":"Polymer Team","editedDate":"2016-09-12 06:37:00-07"},
-        "content":{"title":"New Polycast","bodyType":"LIST","body":[{"key":"Topic 1","value":"Data Binding"},{"key":"Topic 2","value":"Data Flow"},{"key":"Topic 3","value":"Shadow Dom"}]}},
-
-        {"metaData":{"editedBy":"GE Digital","editedDate":"2015-11-03 00:00:00-07"},
-        "content":{"title":"Building the industrial internet","bodyType":"text",
-        "body":[{"text":"On Tuesday","headline":"This is the content headline","isComment":true}]}}"
-        date-format="MMM D, YYYY HH:MM"
-        show-node-content>
-      </px-timeline>
-
+테스트2 타임라인
+<px-timeline
+  time-groups="true"
+  show-node-content="true"
+  enhanced="false"
+  timeline-data=" { "metaData": { "editedDate": "Fri Nov 4 2016 18:28:10 GMT-0700 (PDT)" }, "content": { "title": "Building the industrial internet", "body": [ { "text": "On Tuesday, GE CEO Jeff Immelt and Intel CEO Brian Krzanich spoke at the Intel Developer Forum in San Francisco." } ] } } "
+  date-format="MMM D, YYYY HH:MM">
+</px-timeline>
+테스트3 써치바
+<px-typeahead
+placeholder="이름으로 검색"
+local-candidates='["가나다","라마바","아자차","카타파","김김김","김모모","박모모","이모모"]'
+>
+</px-typeahead>
     </px-card>
   </template>
 
