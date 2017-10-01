@@ -11,7 +11,7 @@
     "assetZoneId": "f0fa858e-4b78-4b5b-8841-e1a5edf4fe3a",
     "windServiceURL": "https://yh-edison-0826-winddata-service.run.aws-usw02-pr.ice.predix.io",
     "websocketServerURL": "/livestream",
-    "rmdDatasourceURL": "",
+    "rmdDatasourceURL": "https://ggohee17-rmd-datasource.run.aws-usw02-pr.ice.predix.io",
     "rmdDocsURL": "https://raw.githubusercontent.com/PredixDev/predix-rmd-ref-app/master/README.md"
   }
 }
