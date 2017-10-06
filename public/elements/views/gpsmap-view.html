@@ -18,11 +18,9 @@
 
 <dom-module id="gpsmap-view">
   <template>
-    <iframe src="./daummap.html" width="1000" height="800" scrolling="no" framespacing=0 marginheight=0 marginwidth=0 vspace=0></iframe><p>
-    <!--iframe option width="100%" height="400" name="ppp" frameborder="0"-->
+    <iframe src="./daummap.html" width="100%" height="800" scrolling="no" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 vspace=0></iframe>
 
-
-      <div class="alert-message-container">
+      <div style="overflow:hidden" class="alert-message-container">
           <px-alert-message visible id="a" type="important" action="dismiss" message-title="일OO 위험경보" message="GPS정보수신 불가능. 발찌훼손 우려" auto-dismiss="0" hide-severity hide-badge></px-alert-message>
           <px-alert-message visible id="b" type="important" action="dismiss" message-title="이OO 위험경보" message="GPS정보수신 불가능. 발찌훼손 우려" auto-dismiss="0" hide-severity hide-badge></px-alert-message>
           <px-alert-message visible id="c" type="warning" action="dismiss" message-title="삼XX 주의경보" message="OO초등학교 접근." auto-dismiss="200" hide-severity hide-badge></px-alert-message>
